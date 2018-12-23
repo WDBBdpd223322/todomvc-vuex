@@ -7,7 +7,7 @@ const todoList = [
   {
     id: 1,
     content: '吃饭',
-    isFinish: false
+    isFinish: true
   },
   {
     id: 2,
@@ -25,5 +25,10 @@ export default new VuexStore.Store({
   state: {
     title: 'todo-Vuex',
     todoList
+  },
+  getters: {
+    toggleAll (state) {
+      return state.todoList.every(item => item.isFinish)
+    }
   }
 })

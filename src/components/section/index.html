@@ -4,12 +4,18 @@
     <input class="new-todo" placeholder="What needs to be done?" autofocus>
   </header>
   <section class="main">
-    <input id="toggle-all" class="toggle-all" type="checkbox">
+    <input
+      id="toggle-all"
+      class="toggle-all"
+      type="checkbox"
+      :checked="toggleAll">
     <label for="toggle-all">Mark all as complete</label>
     <router-view></router-view>
   </section>
-  <footer class="footer">
-    <span class="todo-count"><strong>0</strong> item left</span>
+  <footer
+    class="footer"
+    v-if="todoList.length">
+    <span class="todo-count"><strong>{{ activeTotal }}</strong> item left</span>
     <ul class="filters">
       <li>
         <router-link to="/all">All</router-link>
@@ -21,6 +27,8 @@
         <router-link to="/completed">Completed</router-link>
       </li>
     </ul>
-    <button class="clear-completed">Clear completed</button>
+    <button
+      class="clear-completed"
+      v-if="activeTotal !== todoList.length">Clear completed</button>
   </footer>
 </section>

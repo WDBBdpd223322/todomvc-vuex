@@ -1,3 +1,4 @@
+import { mapState, mapGetters } from 'vuex'
 export default {
   name: 'section-html',
   data () {
@@ -6,8 +7,10 @@ export default {
     }
   },
   computed: {
-    title () {
-      return this.$store.state.title
+    ...mapState(['title', 'todoList']),
+    ...mapGetters(['toggleAll']),
+    activeTotal () {
+      return this.todoList.filter(item => !item.isFinish).length
     }
   }
 }
