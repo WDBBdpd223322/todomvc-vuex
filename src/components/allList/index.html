@@ -4,7 +4,11 @@
     v-for="item in todoList"
     :key="item.id">
     <div class="view">
-      <input class="toggle" type="checkbox" :checked="item.isFinish">
+      <input
+        class="toggle"
+        type="checkbox"
+        :checked="item.isFinish"
+        @change="changeState(item.id)">
       <label>{{ item.content }}</label>
       <button
         class="destroy"

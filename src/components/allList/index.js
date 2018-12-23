@@ -8,6 +8,9 @@ export default {
   methods: {
     delTodo (id) {
       this.$store.commit('delTodo', id)
+    },
+    changeState (id) {
+      this.$store.commit('changeState', id)
     }
   }
 }

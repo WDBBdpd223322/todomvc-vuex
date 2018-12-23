@@ -10,7 +10,7 @@ export default new VuexStore.Store({
   },
   getters: {
     toggleAll (state) {
-      if (!state.length) return false
+      if (!state.todoList.length) return false
       return state.todoList.every(item => item.isFinish)
     }
   },
@@ -28,6 +28,12 @@ export default new VuexStore.Store({
     },
     delTodo (state, type) {
       state.todoList = state.todoList.filter(item => item.id !== type)
+      Local.setList(state.todoList)
+    },
+    changeState (state, id) {
+      state.todoList.forEach(item => {
+        if (item.id === id) item.isFinish = !item.isFinish
+      })
       Local.setList(state.todoList)
     }
   }
