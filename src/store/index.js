@@ -28,7 +28,17 @@ export default new VuexStore.Store({
   },
   getters: {
     toggleAll (state) {
+      if (!state.length) return false
       return state.todoList.every(item => item.isFinish)
+    }
+  },
+  mutations: {
+    addTodo (state, type) {
+      state.todoList.push({
+        id: state.todoList.length ? state.todoList.sort((a, b) => a.id - b.id)[state.todoList.length - 1]['id'] - 0 + 1 : 1,
+        content: type,
+        isFinish: false
+      })
     }
   }
 })

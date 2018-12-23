@@ -3,7 +3,17 @@ export default {
   name: 'section-html',
   data () {
     return {
-      // title: 'todomv·vuex'
+      newTodoText: ''
+    }
+  },
+  methods: {
+    addTodo () {
+      if (this.newTodoText.trim()) {
+        this.$store.commit('addTodo', this.newTodoText.trim())
+      } else {
+        window.alert('请输入您想添加的 todo')
+      }
+      this.newTodoText = ''
     }
   },
   computed: {
@@ -11,6 +21,13 @@ export default {
     ...mapGetters(['toggleAll']),
     activeTotal () {
       return this.todoList.filter(item => !item.isFinish).length
+    }
+  },
+  directives: {
+    focus: {
+      inserted (el) {
+        el.focus()
+      }
     }
   }
 }
