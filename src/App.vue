@@ -13,6 +13,9 @@ export default {
   components: {
     SectionHtml,
     FooterHtml
+  },
+  created () {
+    this.$store.commit('getTodoList')
   }
 }
 </script>

@@ -3,28 +3,10 @@ import VuexStore from 'vuex'
 
 Vue.use(VuexStore)
 
-const todoList = [
-  {
-    id: 1,
-    content: '吃饭',
-    isFinish: true
-  },
-  {
-    id: 2,
-    content: '睡觉',
-    isFinish: true
-  },
-  {
-    id: 3,
-    content: '打豆豆',
-    isFinish: false
-  }
-]
-
 export default new VuexStore.Store({
   state: {
     title: 'todo-Vuex',
-    todoList
+    todoList: []
   },
   getters: {
     toggleAll (state) {
@@ -33,12 +15,16 @@ export default new VuexStore.Store({
     }
   },
   mutations: {
+    getTodoList (state) {
+      state.todoList = JSON.parse(window.localStorage.getItem('todoList')) || []
+    },
     addTodo (state, type) {
       state.todoList.push({
         id: state.todoList.length ? state.todoList.sort((a, b) => a.id - b.id)[state.todoList.length - 1]['id'] - 0 + 1 : 1,
         content: type,
         isFinish: false
       })
+      window.localStorage.setItem('todoList', JSON.stringify(state.todoList))
     }
   }
 })
