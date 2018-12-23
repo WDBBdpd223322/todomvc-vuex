@@ -1,6 +1,6 @@
 <ul class="todo-list">
   <li
-    :class="{completed: item.isFinish}"
+    :class="{completed: item.isFinish, editing: item.id === tmpInfo.id}"
     v-for="item in todoList"
     :key="item.id">
     <div class="view">
@@ -9,11 +9,12 @@
         type="checkbox"
         :checked="item.isFinish"
         @change="changeState(item.id)">
-      <label>{{ item.content }}</label>
+      <label
+        @dblclick="showEdit(item)">{{ item.content }}</label>
       <button
         class="destroy"
         @click="delTodo(item.id)"></button>
     </div>
-    <input class="edit" :value="item.content">
+    <input class="edit" :value="tmpInfo.content">
   </li>
 </ul>
