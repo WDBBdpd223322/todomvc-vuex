@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VuexStore from 'vuex'
-
+import Local from '@/assets/js/index.js'
 Vue.use(VuexStore)
 
 export default new VuexStore.Store({
@@ -16,7 +16,7 @@ export default new VuexStore.Store({
   },
   mutations: {
     getTodoList (state) {
-      state.todoList = JSON.parse(window.localStorage.getItem('todoList')) || []
+      state.todoList = Local.getList()
     },
     addTodo (state, type) {
       state.todoList.push({
@@ -24,11 +24,11 @@ export default new VuexStore.Store({
         content: type,
         isFinish: false
       })
-      window.localStorage.setItem('todoList', JSON.stringify(state.todoList))
+      Local.setList(state.todoList)
     },
     delTodo (state, type) {
       state.todoList = state.todoList.filter(item => item.id !== type)
-      window.localStorage.setItem('todoList', JSON.stringify(state.todoList))
+      Local.setList(state.todoList)
     }
   }
 })
