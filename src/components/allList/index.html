@@ -15,6 +15,12 @@
         class="destroy"
         @click="delTodo(item.id)"></button>
     </div>
-    <input class="edit" :value="tmpInfo.content">
+    <input
+      class="edit"
+      v-model="tmpInfo.content"
+      v-focus
+      @keyup.esc="cancleEdit"
+      @blur="cancleEdit"
+      @keyup.enter="saveEdit">
   </li>
 </ul>

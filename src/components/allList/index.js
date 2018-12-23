@@ -12,9 +12,27 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['delTodo', 'changeState']),
+    ...mapMutations(['delTodo', 'changeState', 'updateTodo']),
     showEdit (item) {
       this.tmpInfo = JSON.parse(JSON.stringify(item))
+    },
+    cancleEdit () {
+      this.tmpInfo = {}
+    },
+    saveEdit () {
+      if (!this.tmpInfo.content.trim()) {
+        this.delTodo(this.tmpInfo.id)
+      } else {
+        this.updateTodo([this.tmpInfo.id, this.tmpInfo.content.trim()])
+      }
+      this.tmpInfo = {}
+    }
+  },
+  directives: {
+    focus: {
+      componentUpdated (el) {
+        el.focus()
+      }
     }
   }
 }
