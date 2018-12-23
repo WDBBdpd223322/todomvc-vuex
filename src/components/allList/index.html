@@ -1,18 +1,13 @@
 <ul class="todo-list">
-  <li class="completed">
+  <li
+    :class="{completed: item.isFinish}"
+    v-for="item in todoList"
+    :key="item.id">
     <div class="view">
-      <input class="toggle" type="checkbox" checked>
-      <label>Taste JavaScript</label>
+      <input class="toggle" type="checkbox" :checked="item.isFinish">
+      <label>{{ item.content }}</label>
       <button class="destroy"></button>
     </div>
-    <input class="edit" value="Create a TodoMVC template">
-  </li>
-  <li>
-    <div class="view">
-      <input class="toggle" type="checkbox">
-      <label>Buy a unicorn</label>
-      <button class="destroy"></button>
-    </div>
-    <input class="edit" value="Rule the web">
+    <input class="edit" :value="item.content">
   </li>
 </ul>

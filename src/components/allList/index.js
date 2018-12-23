@@ -1,3 +1,8 @@
 export default {
-  name: 'all'
+  name: 'all',
+  computed: {
+    todoList () {
+      return this.$store.state.todoList
+    }
+  }
 }

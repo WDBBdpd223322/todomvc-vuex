@@ -1,10 +1,12 @@
 <ul class="todo-list">
-  <li>
+  <li
+    v-for="item in todoList"
+    :key="item.id">
     <div class="view">
       <input class="toggle" type="checkbox">
-      <label>Buy a unicorn</label>
+      <label>{{ item.content }}</label>
       <button class="destroy"></button>
     </div>
-    <input class="edit" value="Rule the web">
+    <input class="edit" :value="item.content">
   </li>
 </ul>

@@ -1,3 +1,8 @@
 export default {
-  name: 'active'
+  name: 'active',
+  computed: {
+    todoList () {
+      return this.$store.state.todoList.filter(item => !item.isFinish)
+    }
+  }
 }
