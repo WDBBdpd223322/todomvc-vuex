@@ -13,7 +13,8 @@
       id="toggle-all"
       class="toggle-all"
       type="checkbox"
-      :checked="toggleAll">
+      :checked="toggleAll"
+      @change="changeStateAll($event.target.checked)">
     <label for="toggle-all">Mark all as complete</label>
     <router-view></router-view>
   </section>

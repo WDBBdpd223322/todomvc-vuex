@@ -1,4 +1,4 @@
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'section-html',
   data () {
@@ -14,7 +14,8 @@ export default {
         window.alert('请输入您想添加的 todo')
       }
       this.newTodoText = ''
-    }
+    },
+    ...mapMutations(['changeStateAll'])
   },
   computed: {
     ...mapState(['title', 'todoList']),

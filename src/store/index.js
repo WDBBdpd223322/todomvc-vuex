@@ -35,6 +35,12 @@ export default new VuexStore.Store({
         if (item.id === id) item.isFinish = !item.isFinish
       })
       Local.setList(state.todoList)
+    },
+    changeStateAll (state, type) {
+      state.todoList.forEach(item => {
+        item.isFinish = type
+      })
+      Local.setList(state.todoList)
     }
   }
 })
