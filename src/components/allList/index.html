@@ -6,7 +6,9 @@
     <div class="view">
       <input class="toggle" type="checkbox" :checked="item.isFinish">
       <label>{{ item.content }}</label>
-      <button class="destroy"></button>
+      <button
+        class="destroy"
+        @click="delTodo(item.id)"></button>
     </div>
     <input class="edit" :value="item.content">
   </li>

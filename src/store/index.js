@@ -25,6 +25,10 @@ export default new VuexStore.Store({
         isFinish: false
       })
       window.localStorage.setItem('todoList', JSON.stringify(state.todoList))
+    },
+    delTodo (state, type) {
+      state.todoList = state.todoList.filter(item => item.id !== type)
+      window.localStorage.setItem('todoList', JSON.stringify(state.todoList))
     }
   }
 })
