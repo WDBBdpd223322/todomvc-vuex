@@ -35,6 +35,7 @@
     </ul>
     <button
       class="clear-completed"
-      v-if="activeTotal !== todoList.length">Clear completed</button>
+      v-if="activeTotal !== todoList.length"
+      @click="delAll">Clear completed</button>
   </footer>
 </section>

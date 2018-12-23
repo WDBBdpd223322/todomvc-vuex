@@ -41,6 +41,10 @@ export default new VuexStore.Store({
         item.isFinish = type
       })
       Local.setList(state.todoList)
+    },
+    delAll (state) {
+      state.todoList = state.todoList.filter(item => !item.isFinish)
+      Local.setList(state.todoList)
     }
   }
 })

@@ -15,7 +15,7 @@ export default {
       }
       this.newTodoText = ''
     },
-    ...mapMutations(['changeStateAll'])
+    ...mapMutations(['changeStateAll', 'delAll'])
   },
   computed: {
     ...mapState(['title', 'todoList']),
