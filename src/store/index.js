@@ -47,6 +47,7 @@ export default new VuexStore.Store({
       Local.setList(state.todoList)
     },
     updateTodo (state, [id, content]) {
+      console.log(id)
       state.todoList.forEach(item => {
         if (item.id === id) {
           item.content = content
