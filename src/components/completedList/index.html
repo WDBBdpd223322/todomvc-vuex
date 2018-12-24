@@ -1,13 +1,26 @@
 <ul class="todo-list">
   <li
-    class="completed"
+    :class="{completed: true, editing: item.id === tmpInfo.id}"
     v-for="item in todoList"
     :key="item.id">
     <div class="view">
-      <input class="toggle" type="checkbox" checked>
-      <label>{{ item.content }}</label>
-      <button class="destroy"></button>
+      <input
+        class="toggle"
+        type="checkbox"
+        checked
+        @change="changeState(item.id)">
+      <label
+        @dblclick="showEdit(item)">{{ item.content }}</label>
+      <button
+        class="destroy"
+        @click="delTodo(item.id)"></button>
     </div>
-    <input class="edit" :value="item.content">
+    <input
+      class="edit"
+      v-model="tmpInfo.content"
+      v-focus
+      @blur="cancleEdit"
+      @keyup.esc="cancleEdit"
+      @keyup.enter="saveEdit">
   </li>
 </ul>

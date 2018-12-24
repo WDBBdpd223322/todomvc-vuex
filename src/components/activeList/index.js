@@ -41,5 +41,14 @@ export default {
     todoList () {
       return this.$store.state.todoList.filter(item => !item.isFinish)
     }
+  },
+  watch: {
+    todoList (newVal) {
+      if (!newVal.length) {
+        setTimeout(() => {
+          this.$router.push('/all')
+        }, 1000)
+      }
+    }
   }
 }
